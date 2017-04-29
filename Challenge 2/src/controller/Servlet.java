@@ -29,6 +29,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+//java along with servlets was once again a choice based on familiarity. mongoDB was chosen over cloudant 
+//both for being declared as preferred and for taking an opportunity to learn a bit more about it.
 public class Servlet extends HttpServlet {
 	
 	//this location will be shown at the urls in the json. update accordingly to publish by different means

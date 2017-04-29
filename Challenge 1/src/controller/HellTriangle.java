@@ -3,9 +3,13 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//i chose java for this challenge for the familiarity i have with it. given the purely logic nature of the
+//challenge it didn't seem like any language would bring benefits that outweight the familiarity with the
+//language while keeping it readable
+
 //intended solution: solve from bottom to top. start at the second to last row, judge the maximum value
-//obtainable by every node in it, update the node's value from its single component to the composed new one, 
-//save the path to the maximum value, move up a row and repeat
+//obtainable by each subtriangle starting at each node in it, update the node's value from its single 
+//component to the subtriangle's maximum, save the path to the maximum value, move up a row and repeat
 //in case of equal results for both options store both paths
 public class HellTriangle {
 	
@@ -52,8 +56,6 @@ public class HellTriangle {
 						newPathsList.add(s+input[i+1][j]);
 					}
 				}
-				
-				
 				else if(triangle[i+1][j] < triangle[i+1][j+1]){
 					maxValue = triangle[i][j]+triangle[i+1][j+1];
 					for(String s : pathsMap.get(j+1)){
@@ -63,6 +65,9 @@ public class HellTriangle {
 					}
 				}
 				
+				//if both options have the same value record both paths in order to give all possible 
+				//answers. should only one answer be required, changing the previous ifs' conditions' 
+				//gt to gte or lt to lte will wield only the left-most or right-most paths, respectively
 				else{
 					maxValue = triangle[i][j]+triangle[i+1][j];
 					for(String s : pathsMap.get(j)){
@@ -77,10 +82,15 @@ public class HellTriangle {
 					}
 				}
 
+				//put the maximum value of the subtriangle at its origin to prepare the next level's
+				//calculations or final answer
 				triangle[i][j] = maxValue;
+				
+				//store the newly calculated triangle's answer path to prepare for further calculations
 				newPathsMap.put(j, newPathsList);
 				
 			}
+			//set the paths for the next loop
 			pathsMap = newPathsMap;
 		}
 		

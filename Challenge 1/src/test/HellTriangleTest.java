@@ -7,10 +7,10 @@ import controller.HellTriangle;
 public class HellTriangleTest {
 	
 	//amount of random triangle tests to perform
-	final static int RANDOM_TEST_COUNT = 1;
+	final static int RANDOM_TEST_COUNT = 5;
 	
 	//amount of lines each random triangle should have
-	final static int RANDOM_TEST_DEPTH = 250;
+	final static int RANDOM_TEST_DEPTH = 4;
 	
 	//maximum value for each node in the random triangle tests
 	final static int RANDOM_TEST_MAX_VAL = 9;
@@ -37,9 +37,9 @@ public class HellTriangleTest {
 				testArray[i] = new int[i+1];
 				for(int j = 0; j <= i; j++){
 					testArray[i][j] = random.nextInt(RANDOM_TEST_MAX_VAL+1);
-//					pretty += testArray[i][j] + " ";
+					pretty += testArray[i][j] + " ";
 				}
-//				pretty += "\n";
+				pretty += "\n";
 			}
 			
 			System.out.print("Test " + (k+1) + ":\n" + pretty);
